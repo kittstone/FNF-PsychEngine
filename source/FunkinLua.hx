@@ -655,15 +655,19 @@ class FunkinLua {
 		});
 		Lua_helper.add_callback(lua, "characterIsPlayingAnim", function(character:String, anim:String) {
 			switch(character.toLowerCase()) {
+				var theShit:Bool = false;
 				case 'dad':
 					if(lePlayState.dad.animOffsets.exists(anim))
-						return true;
+						theShit = true;
 				case 'gf':
 					if(lePlayState.gf.animOffsets.exists(anim))
-						return true;
+						theShit = true;
 				case 'bf':
 					if(lePlayState.boyfriend.animOffsets.exists(anim))
-						return true;
+						theShit = true;
+				if (theShit == true){
+					return theShit;
+				}
 			}
 		});
 		Lua_helper.add_callback(lua, "characterDance", function(character:String) {

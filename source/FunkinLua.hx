@@ -6,6 +6,10 @@ import llua.Convert;
 #end
 
 import flixel.FlxG;
+import flixel.util.FlxDestroyUtil;
+import flixel.FlxSprite;
+import flixel.graphics.frames.FlxAtlasFrames;
+import animateatlas.AtlasFrameMaker;
 import flixel.tweens.FlxTween;
 import flixel.tweens.FlxEase;
 import flixel.text.FlxText;
@@ -163,6 +167,14 @@ class FunkinLua {
 				return Reflect.getProperty(coverMeInPiss, killMe[killMe.length-1]);
 			}
 			return Reflect.getProperty(lePlayState, variable);
+		});
+		Lua_helper.add_callback(lua, "newTextureAtlasSprite", function(tag:String, path:String, x:Float, y:Float){
+			tag = tag.replace('.', '');
+			resetSpriteTag(tag);
+			var leSprite:ModchartSprite = new ModchartSprite(x, y);
+			leSprite.frames = AtlasFrameMaker.construct(path);
+			leSprite.antialiasing = ClientPrefs.globalAntialiasing;
+			lePlayState.modchartSprites.set(tag, leSprite);
 		});
 		Lua_helper.add_callback(lua, "setProperty", function(variable:String, value:Dynamic) {
 			var killMe:Array<String> = variable.split('.');
@@ -639,6 +651,19 @@ class FunkinLua {
 				default: 
 					if(lePlayState.boyfriend.animOffsets.exists(anim))
 						lePlayState.boyfriend.playAnim(anim, forced);
+			}
+		});
+		Lua_helper.add_callback(lua, "characterIsPlayingAnim", function(character:String, anim:String) {
+			switch(character.toLowerCase()) {
+				case 'dad':
+					if(lePlayState.dad.animOffsets.exists(anim))
+						return true;
+				case 'gf':
+					if(lePlayState.gf.animOffsets.exists(anim))
+						return true;
+				case 'bf':
+					if(lePlayState.boyfriend.animOffsets.exists(anim))
+						return true;
 			}
 		});
 		Lua_helper.add_callback(lua, "characterDance", function(character:String) {

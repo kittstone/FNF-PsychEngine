@@ -654,8 +654,8 @@ class FunkinLua {
 			}
 		});
 		Lua_helper.add_callback(lua, "characterIsPlayingAnim", function(character:String, anim:String) {
+			var theShit:Bool = false;
 			switch(character.toLowerCase()) {
-				var theShit:Bool = false;
 				case 'dad':
 					if(lePlayState.dad.animOffsets.exists(anim))
 						theShit = true;

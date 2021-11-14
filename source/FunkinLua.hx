@@ -31,7 +31,7 @@ import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.text.FlxText;
 import flixel.util.FlxColor;
 import flixel.group.FlxSpriteGroup.FlxTypedSpriteGroup;
-import flixel.FlxState;;
+import flixel.FlxState;
 import flixel.input.keyboard.FlxKey;
 import openfl.display.BlendMode;
 #if sys

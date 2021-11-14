@@ -26,6 +26,13 @@ import flixel.util.FlxColor;
 import flixel.FlxBasic;
 import flixel.FlxObject;
 import flixel.FlxSprite;
+import flixel.input.gamepad.mappings.XInputMapping;
+import flixel.group.FlxGroup.FlxTypedGroup;
+import flixel.text.FlxText;
+import flixel.util.FlxColor;
+import flixel.group.FlxSpriteGroup.FlxTypedSpriteGroup;
+import flixel.FlxState;;
+import flixel.input.keyboard.FlxKey;
 import openfl.display.BlendMode;
 #if sys
 import sys.FileSystem;
